@@ -15,6 +15,8 @@ public class Gui extends javax.swing.JFrame {
      */
     public Gui() {
         initComponents();
+        AlgoritmoEvolutivo al = new AlgoritmoEvolutivo(5, 1);
+        al.ejecutar();
     }
 
     /**

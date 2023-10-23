@@ -1,3 +1,7 @@
 com\mycompany\algoritmoevolutivo\AlgoritmoEvolutivo.class
 Gui\Gui.class
+Gui\Horario.class
+Gui\Profesor.class
+Gui\AlgoritmoEvolutivo.class
 Gui\Gui$1.class
+Gui\Hora.class
