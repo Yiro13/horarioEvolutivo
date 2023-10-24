@@ -18,7 +18,7 @@ class Horario {
     private Profesor[] profesores;
     public final static int HORAS_CLASE_X_PROFESOR = 5;
     public final static int MAX_PRIORIDAD_PROFESOR = 4;
-    private int mayorCantidadHorasJuntas;
+    private double puntaje;
 
     public Horario(int cantidadHoras, int cantidadProfesores, int cantidadSalones) {
         this.horas = new Hora[cantidadHoras * 5]; // 5 dias de la semana
@@ -74,21 +74,36 @@ class Horario {
             }
 
         }
-
+        hacerEvaluacion();
         imprimirHorario();
     }
     
     public void hacerEvaluacion(){
-        this.mayorCantidadHorasJuntas = 0;
-        int j = 0;
+        int contador = 1;
+        this.puntaje = 0;
+        double bonusTemprano;
+        int bonus = 5;
         for (Hora hora : horas) {
             
+            if(contador % 5 == 0){
+                bonus--;
+            }
+            bonusTemprano = bonus / 5;
+            
             for (int i = 0; i < hora.getCantidadSalones(); i++) {
-                if (hora.getSalonProfesor(i) >= 0) {
-                    System.out.println(j + " Dia " + (j / (horas.length / 5)) + " hora " + (j % (horas.length / 5)) + " salon " + i + " profesor " + profesores[hora.getSalonProfesor(i)].getNombre());
+                switch (hora.getSalonProfesor(i)){
+                    case 0 -> puntaje += 4 * bonusTemprano;
+                    
+                    case 1 -> puntaje += 3 * bonusTemprano;
+                        
+                    case 2 -> puntaje += 2 * bonusTemprano;
+                        
+                    case 3 -> puntaje += 1 * bonusTemprano;
+                    
+                    default -> puntaje += 0;
                 }
             }
-            j++;
+            contador++;
         }
     }
 
@@ -103,6 +118,10 @@ class Horario {
             }
             j++;
         }
+    }
+   
+    public double getPuntaje(){
+        return puntaje;
     }
 
 }

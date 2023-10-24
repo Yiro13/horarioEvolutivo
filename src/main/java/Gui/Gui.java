@@ -59,6 +59,11 @@ public class Gui extends javax.swing.JFrame {
         });
 
         buttonGenerar.setText("GENERAR");
+        buttonGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerarActionPerformed(evt);
+            }
+        });
 
         labelGeneracion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelGeneracion.setText("GENERACIÓN:");
@@ -145,6 +150,10 @@ public class Gui extends javax.swing.JFrame {
     private void fieldAulasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldAulasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldAulasActionPerformed
+
+    private void buttonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonGenerarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
