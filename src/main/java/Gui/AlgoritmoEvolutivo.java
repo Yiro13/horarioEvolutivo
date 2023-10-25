@@ -5,6 +5,8 @@
 package Gui;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,7 +33,7 @@ public class AlgoritmoEvolutivo {
         
         for (int i = 0; i < numeroGeneracion; i++) {
             
-            //List<Horario> seleccionados = seleccionar();
+            List<Horario> seleccionados = seleccionar();
             // Utilizada para cruzar los horarios seleccionados
             //List<Horario> nodo = cruzar(seleccionados);
             //mutar(nodo);
@@ -56,11 +58,23 @@ public class AlgoritmoEvolutivo {
     }
 
     private List<Horario> seleccionar() {
-        // Implementar horarios basada en aptitud
-        for (Horario horario : muestra) {
-            
+        Horario[] horariosOrdenados = muestra.toArray(Horario[]::new); //Se convierte la mestra a un array
+        List<Horario> horariosSeleccionados = new ArrayList<>();
+   
+        for(int i = 0; i < horariosOrdenados.length - 1; i++){ //Se ordena el array horariosOrdenados descendentemente
+            for(int j = 0; j < horariosOrdenados.length - 1; j++){
+                if(horariosOrdenados[j].getPuntaje() < horariosOrdenados[j + 1].getPuntaje()){
+                    Horario temp = horariosOrdenados[j];
+                    horariosOrdenados[j] = horariosOrdenados[j + 1];
+                    horariosOrdenados[j + 1] = temp;
+                }
+            }
         }
-        return null;
+        
+        horariosSeleccionados.add(horariosOrdenados[0]);//Se agregan los primeros 2 horarios con el puntaje mas alto a horariosSeleccionados
+        horariosSeleccionados.add(horariosOrdenados[1]);
+        
+        return horariosSeleccionados;
     }
 
     private List<Horario> cruzar(List<Horario> seleccionados) {
@@ -88,7 +102,7 @@ public class AlgoritmoEvolutivo {
                 mejorHorario = horario;
             }
         }
-        return mejorHorario;
+        return mejorHorario; //Se obtiene el horario con mayor puntuacion de la muestra
     }
 
 }

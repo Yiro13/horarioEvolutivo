@@ -79,20 +79,20 @@ class Horario {
     }
     
     public void hacerEvaluacion(){
-        int contador = 1;
-        this.puntaje = 0;
-        double bonusTemprano;
-        int bonus = 5;
+        int contador = 1; //Contador de ciclos
+        this.puntaje = 0; //Puntaje del horario
+        double bonusTemprano; //Bonus dado por ser una clase en horas tempranas
+        int bonus = 5; //Cantidad por la que se dividirá el bonusTemprano para ser un número entre 0 y 1
         for (Hora hora : horas) {
             
             if(contador % 5 == 0){
                 bonus--;
             }
-            bonusTemprano = bonus / 5;
+            bonusTemprano = bonus / 5; //El bonus baja por cada hora
             
             for (int i = 0; i < hora.getCantidadSalones(); i++) {
                 switch (hora.getSalonProfesor(i)){
-                    case 0 -> puntaje += 4 * bonusTemprano;
+                    case 0 -> puntaje += 4 * bonusTemprano; //El bonusTemprano se multiplica por la prioridad del profesor
                     
                     case 1 -> puntaje += 3 * bonusTemprano;
                         
@@ -123,5 +123,10 @@ class Horario {
     public double getPuntaje(){
         return puntaje;
     }
-
+    
+    /*class HorarioComparator implements java.util.Comparator<Horario> {
+    @Override
+    public  compare(Horario a, Horario b) {
+        return a.getPuntaje() > b.getPuntaje();
+    }*/
 }
