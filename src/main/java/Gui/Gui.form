@@ -66,7 +66,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="spinnerEntrada" min="-2" pref="54" max="-2" attributes="0"/>
+                              <Component id="spinnerEntrada" min="-2" pref="102" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -133,6 +133,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldProfesores">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldProfesoresActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="fieldAulas">
           <Events>

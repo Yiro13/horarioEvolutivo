@@ -18,7 +18,7 @@ class Horario {
     private Profesor[] profesores;
     public final static int HORAS_CLASE_X_PROFESOR = 5;
     public final static int MAX_PRIORIDAD_PROFESOR = 4;
-    private double puntaje;
+    private float puntaje;
 
     public Horario(int cantidadHoras, int cantidadProfesores, int cantidadSalones) {
         this.horas = new Hora[cantidadHoras * 5]; // 5 dias de la semana
@@ -47,8 +47,6 @@ class Horario {
             }
         }
 
-        
-
         llenarSalones(cantidadHoras, cantidadProfesores, cantidadSalones); // 5 -> 5 dias de la semana
     }
 
@@ -75,14 +73,14 @@ class Horario {
 
         }
         hacerEvaluacion();
-        imprimirHorario();
+        //imprimirHorario();
     }
     
     public void hacerEvaluacion(){
         int contador = 1; //Contador de ciclos
         this.puntaje = 0; //Puntaje del horario
-        double bonusTemprano; //Bonus dado por ser una clase en horas tempranas
-        int bonus = 5; //Cantidad por la que se dividirá el bonusTemprano para ser un número entre 0 y 1
+        float bonusTemprano; //Bonus dado por ser una clase en horas tempranas
+        float bonus = 5; //Cantidad por la que se dividirá el bonusTemprano para ser un número entre 0 y 1
         for (Hora hora : horas) {
             
             if(contador % 5 == 0){
@@ -100,7 +98,7 @@ class Horario {
                         
                     case 3 -> puntaje += 1 * bonusTemprano;
                     
-                    default -> puntaje += 0;
+                    default -> puntaje += 0.0;
                 }
             }
             contador++;
@@ -113,20 +111,18 @@ class Horario {
 
             for (int i = 0; i < hora.getCantidadSalones(); i++) {
                 if (hora.getSalonProfesor(i) >= 0) {
-                    System.out.println(j + " Dia " + (j / (horas.length / 5)) + " hora " + (j % (horas.length / 5)) + " salon " + i + " profesor " + profesores[hora.getSalonProfesor(i)].getNombre());
+                    System.out.println(j + " Dia " + (j / (horas.length / 5)) + " hora " + (j % (horas.length / 5)) + " salon " + i /*+ " profesor " + profesores[hora.getSalonProfesor(i)].getNombre()*/);
                 }
             }
             j++;
         }
     }
    
-    public double getPuntaje(){
+    public float getPuntaje(){
         return puntaje;
     }
     
-    /*class HorarioComparator implements java.util.Comparator<Horario> {
-    @Override
-    public  compare(Horario a, Horario b) {
-        return a.getPuntaje() > b.getPuntaje();
-    }*/
+    public Hora[] getHoras(){
+        return horas;
+    }
 }

@@ -15,8 +15,6 @@ public class Gui extends javax.swing.JFrame {
      */
     public Gui() {
         initComponents();
-        AlgoritmoEvolutivo al = new AlgoritmoEvolutivo(5, 1);
-        al.ejecutar();
     }
 
     /**
@@ -51,6 +49,12 @@ public class Gui extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("INGRESA NÚMERO DE AULAS:");
+
+        fieldProfesores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldProfesoresActionPerformed(evt);
+            }
+        });
 
         fieldAulas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +106,7 @@ public class Gui extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel4)
                             .addGap(18, 18, 18)
-                            .addComponent(spinnerEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(spinnerEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(301, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -152,8 +156,14 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldAulasActionPerformed
 
     private void buttonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerarActionPerformed
-        // TODO add your handling code here:
+        int horas = (Integer) spinnerSalida.getValue() - (Integer) spinnerEntrada.getValue();
+        AlgoritmoEvolutivo al = new AlgoritmoEvolutivo(5, 1000, horas, Integer.parseInt(fieldProfesores.getText()), Integer.parseInt(fieldAulas.getText())); 
+        al.ejecutar();
     }//GEN-LAST:event_buttonGenerarActionPerformed
+
+    private void fieldProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldProfesoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldProfesoresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

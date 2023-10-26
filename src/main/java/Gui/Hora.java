@@ -30,5 +30,9 @@ public class Hora {
         return salones.length;
     }
     
+    public int[] getSalones(){
+        return salones;
+    }
+    
     
 }
