@@ -5,8 +5,10 @@
 package Gui;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 /**
  *
@@ -82,27 +84,38 @@ class Horario {
         float bonusTemprano; //Bonus dado por ser una clase en horas tempranas
         float bonus = 5; //Cantidad por la que se dividirá el bonusTemprano para ser un número entre 0 y 1
         for (Hora hora : horas) {
+        if (contador % 5 == 0) {
+            bonus--;
+        }
+        bonusTemprano = bonus / 5; // El bonus baja por cada hora
+
+        Set<Integer> profesoresEnHora = new HashSet<>();
+        
+        for (int i = 0; i < hora.getCantidadSalones(); i++) {
+            int profesor = hora.getSalonProfesor(i);
             
-            if(contador % 5 == 0){
-                bonus--;
+            if (profesor == -1) {
+                continue; // No hay profesor asignado en este salón
             }
-            bonusTemprano = bonus / 5; //El bonus baja por cada hora
             
-            for (int i = 0; i < hora.getCantidadSalones(); i++) {
-                switch (hora.getSalonProfesor(i)){
-                    case 0 -> puntaje += 4 * bonusTemprano; //El bonusTemprano se multiplica por la prioridad del profesor
-                    
+            if (profesoresEnHora.contains(profesor)) {
+                // Penalizar si el mismo profesor está en múltiples salones en la misma hora
+                puntaje -= 0.3; // Puedes ajustar la penalización según sea necesario
+            } else {
+                profesoresEnHora.add(profesor);
+                
+                switch (profesor) {
+                    case 0 -> puntaje += 4 * bonusTemprano; // El bonusTemprano se multiplica por la prioridad del profesor
                     case 1 -> puntaje += 3 * bonusTemprano;
-                        
                     case 2 -> puntaje += 2 * bonusTemprano;
-                        
                     case 3 -> puntaje += 1 * bonusTemprano;
-                    
                     default -> puntaje += 0.0;
                 }
             }
-            contador++;
         }
+        contador++;
+    }
+        
     }
 
     public void imprimirHorario() {
@@ -111,7 +124,7 @@ class Horario {
 
             for (int i = 0; i < hora.getCantidadSalones(); i++) {
                 if (hora.getSalonProfesor(i) >= 0) {
-                    System.out.println(j + " Dia " + (j / (horas.length / 5)) + " hora " + (j % (horas.length / 5)) + " salon " + i /*+ " profesor " + profesores[hora.getSalonProfesor(i)].getNombre()*/);
+                    System.out.println(" Dia " + (j / (horas.length / 5)) + " hora " + (j % (horas.length / 5)) + " salon " + i + " profesor " + " " + profesores[hora.getSalonProfesor(i)].getNombre());
                 }
             }
             j++;
@@ -124,5 +137,13 @@ class Horario {
     
     public Hora[] getHoras(){
         return horas;
+    }
+    
+    public Profesor[] getProfesores() {
+        return profesores;
+    }
+    
+    public void mutar() {
+        
     }
 }

@@ -156,8 +156,9 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldAulasActionPerformed
 
     private void buttonGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerarActionPerformed
-        int horas = (Integer) spinnerSalida.getValue() - (Integer) spinnerEntrada.getValue();
-        AlgoritmoEvolutivo al = new AlgoritmoEvolutivo(5, 1000, horas, Integer.parseInt(fieldProfesores.getText()), Integer.parseInt(fieldAulas.getText())); 
+        //int horas = (Integer) spinnerSalida.getValue() - (Integer) spinnerEntrada.getValue();
+        //AlgoritmoEvolutivo al = new AlgoritmoEvolutivo(5, 1, horas, Integer.parseInt(fieldProfesores.getText()), Integer.parseInt(fieldAulas.getText())); 
+        AlgoritmoEvolutivo al = new AlgoritmoEvolutivo(5, 1000, 8, 5, 8); 
         al.ejecutar();
     }//GEN-LAST:event_buttonGenerarActionPerformed
 

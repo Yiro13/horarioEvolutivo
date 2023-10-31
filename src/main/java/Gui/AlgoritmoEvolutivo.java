@@ -41,11 +41,12 @@ public class AlgoritmoEvolutivo {
             
             // Se cruzan los 2 horarios seleccionados
             List<Horario> hijos = cruzar(seleccionados, cantidadHoras, cantidadProfesores, cantidadSalones);
-            mutar(hijos);
+            //mutar(hijos);
             reemplazarMuestra(hijos);
             Horario mejorHorario = getMejorHorario();
             if(mejorHorario != null){
                 System.out.println("Puntaje: " + mejorHorario.getPuntaje());
+                mejorHorario.imprimirHorario();
             }
             System.out.println("----------------------------------------");
         }
@@ -110,24 +111,13 @@ public class AlgoritmoEvolutivo {
         }
         
         for (int k = 0; k < 5; k++){
+            hijo.mutar();
             hijo.hacerEvaluacion();
             hijos.add(hijo);//Se guardan 5 hijos iguales para mutarlos
         }
                 
         return hijos;
-    }
 
-    private void mutar(List<Horario> hijos) {
-        Random random = new Random();
-        // Implementar la mutación de los horarios
-        for(Horario hijo : hijos){
-            for(int i = 0; i < 1; i++){//Por cada horario se hacen tres mutaciones aleatorias en horas y salones aleatorios
-                int horaAleatoria = random.nextInt(hijo.getHoras().length);
-                int salonAleatorio = random.nextInt(hijo.getHoras()[0].getSalones().length);
-                int datoAleatorio = random.nextInt(0, 4);
-                hijo.getHoras()[horaAleatoria].getSalones()[salonAleatorio] = datoAleatorio;
-            }
-        }
     }
 
     private void reemplazarMuestra(List<Horario> hijos) {
