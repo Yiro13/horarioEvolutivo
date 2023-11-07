@@ -82,7 +82,7 @@ class Horario {
         int contador = 1; //Contador de ciclos
         this.puntaje = 0; //Puntaje del horario
         float bonusTemprano; //Bonus dado por ser una clase en horas tempranas
-        float bonus = 5; //Cantidad por la que se dividirá el bonusTemprano para ser un número entre 0 y 1
+        float bonus = 10; //Cantidad por la que se dividirá el bonusTemprano para ser un número entre 0 y 1
         for (Hora hora : horas) {
         if (contador % 5 == 0) {
             bonus--;
@@ -143,7 +143,4 @@ class Horario {
         return profesores;
     }
     
-    public void mutar() {
-        
-    }
 }

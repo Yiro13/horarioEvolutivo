@@ -46,17 +46,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="buttonGenerar" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" max="32767" attributes="0"/>
-                              <Component id="fieldProfesores" alignment="0" max="32767" attributes="0"/>
-                              <Component id="fieldAulas" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="262" max="-2" attributes="0"/>
-                          <Component id="labelGeneracion" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" max="32767" attributes="0"/>
+                          <Component id="fieldProfesores" alignment="0" max="32767" attributes="0"/>
+                          <Component id="fieldAulas" alignment="0" max="32767" attributes="0"/>
                       </Group>
+                      <Component id="buttonGenerar" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -70,7 +66,9 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="301" max="32767" attributes="0"/>
+                  <EmptySpace pref="226" max="32767" attributes="0"/>
+                  <Component id="labelGeneracion" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -88,9 +86,9 @@
                   <Component id="fieldProfesores" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="fieldAulas" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="spinnerEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -102,7 +100,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="buttonGenerar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="115" max="32767" attributes="0"/>
+                  <EmptySpace pref="109" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

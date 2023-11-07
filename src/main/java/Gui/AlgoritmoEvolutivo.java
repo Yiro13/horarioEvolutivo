@@ -7,6 +7,7 @@ package Gui;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import Gui.Gui;
 
 /**
  *
@@ -37,11 +38,12 @@ public class AlgoritmoEvolutivo {
             
             List<Horario> seleccionados = seleccionar();
             // Utilizada para cruzar los horarios seleccionados
+            
             System.out.println("GENERACION: " + (i + 1));
             
             // Se cruzan los 2 horarios seleccionados
             List<Horario> hijos = cruzar(seleccionados, cantidadHoras, cantidadProfesores, cantidadSalones);
-            //mutar(hijos);
+            mutar(hijos);
             reemplazarMuestra(hijos);
             Horario mejorHorario = getMejorHorario();
             if(mejorHorario != null){
@@ -111,13 +113,42 @@ public class AlgoritmoEvolutivo {
         }
         
         for (int k = 0; k < 5; k++){
-            hijo.mutar();
             hijo.hacerEvaluacion();
             hijos.add(hijo);//Se guardan 5 hijos iguales para mutarlos
         }
                 
         return hijos;
 
+    }
+    
+    private void mutar(List<Horario> hijos) {
+        for (Horario hor : hijos) {
+            Random random = new Random(); 
+
+            for (int cambio = 0; cambio < 3; cambio++) {
+                int r1 = random.nextInt(0, cantidadHoras);
+                int r2 = random.nextInt(0, cantidadSalones);
+
+                int r3 = random.nextInt(0, cantidadHoras);
+                int r4 = random.nextInt(0, cantidadSalones);
+
+                while (hor.getHoras()[r1].getSalones()[r2] == -1 || hor.getHoras()[r3].getSalones()[r4] == -1 || (hor.getHoras()[r1].getSalones()[r2] == hor.getHoras()[r3].getSalones()[r4])) {
+                    r1 = random.nextInt(0, cantidadHoras);
+                    r2 = random.nextInt(0, cantidadSalones);
+                    r3 = random.nextInt(0, cantidadHoras);
+                    r4 = random.nextInt(0, cantidadSalones);
+                }
+
+                int profesor1 = hor.getHoras()[r1].getSalones()[r2];
+                int profesor2 = hor.getHoras()[r3].getSalones()[r4];
+
+                hor.getHoras()[r1].getSalones()[r2] = profesor2;
+                hor.getHoras()[r3].getSalones()[r4] = profesor1;
+
+            }
+
+            hor.hacerEvaluacion();
+        }
     }
 
     private void reemplazarMuestra(List<Horario> hijos) {
